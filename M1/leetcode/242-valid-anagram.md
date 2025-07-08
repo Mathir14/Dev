@@ -47,9 +47,9 @@ for char in s:
     count[char] = count.get(char,0)+ 1 
 
 this block of code does:
-it uses the char as the key and uses .get()
+it uses the char as the key and uses get(),
 .get(char,0)+1 works by, if char is present in the dict count, then it appends the char again into the dict and the count value is increased by 1 hence the + 1 outside get()
-if the char is not present in the dict, then it appens the char into the dict and the 0 is increased by 1 meaning theres 1 of that char in the dict
+if the char is not present in the dict, then it appends the char into the dict and the 0 is increased by 1 meaning theres 1 of that char in the dict
 
 for char in t:
     if char not in count or count[char] == 0:
@@ -60,6 +60,7 @@ this block of code does:
 we now have the count of each characters in string s, now we iterate through the string t,
 we check if the char is not present in dict count,
 then that means the char from string t is not present in string s which means it is not an anagram
+
 the second condition counter[char] == 0
 is used to check if the count of the char is same for both strings,
 after each iteration, the count of char is decreased by 1,
