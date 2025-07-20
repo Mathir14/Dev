@@ -1,0 +1,17 @@
+{
+  "user": "lonelydemon",
+  "tasks": [
+    {
+      "title": "Finish Flask API",
+      "done": false
+    },
+    {
+      "title": "Read JSON docs",
+      "done": true
+    }
+  ],
+  "settings": {
+    "theme": "dark",
+    "notifications": true
+  }
+}
