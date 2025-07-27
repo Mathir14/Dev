@@ -31,7 +31,7 @@ class Bank:
 
     def login(self, username, pin):
         user = self.users.get(username)
-        if not username:
+        if not user:
             print("Username not found!")
             return
         if user["pin"] != pin:
