@@ -1,0 +1,21 @@
+{
+  "Mathir": {
+    "pin": "2006",
+    "balance": 5000.0,
+    "transactions": [
+      {
+        "type": "deposit",
+        "amount": 10000.0
+      },
+      {
+        "type": "withdraw",
+        "amount": 5000.0
+      }
+    ]
+  },
+  "Vishnu": {
+    "pin": "2006",
+    "balance": 0,
+    "transactions": []
+  }
+}
