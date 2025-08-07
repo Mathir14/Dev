@@ -1,0 +1,26 @@
+from itertools import (
+    combinations,
+    combinations_with_replacement,
+    groupby,
+    permutations,
+    product,
+)
+
+val = list(product([1, 2], ["a", "b"]))
+print(val)
+
+val_2 = list(product([1, 2], repeat=3))
+print(val_2)
+
+val_3 = list(permutations([1, 2, 3], 2))
+print(val_3)
+
+val_4 = list(combinations([1, 2, 3], 2))
+print(val_4)
+
+val_5 = list(combinations_with_replacement([1, 2, 3], 2))
+print(val_5)
+
+val_6 = groupby([1, 2, 2, 3, 3, 3])
+for i in val_6:
+    print(i[0], list(i[1]))
