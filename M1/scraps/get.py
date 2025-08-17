@@ -1,6 +1,7 @@
 from enum import Enum
 
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -8,6 +9,32 @@ app = FastAPI()
 @app.get("/")
 async def read_root():
     return {"Mathir": "Hello World"}
+
+
+fake_names = [
+    "Mathir",
+    "Alagi",
+    "Papa",
+    "Mami",
+    "Baba",
+    "Dada",
+    "Chatgpt",
+    "Copilot",
+    "Davinci",
+    "Textcurie",
+]
+
+
+@app.get("/names/")
+async def list_names(limit: int = 5):
+    return {"names": fake_names[:limit]}
+
+
+@app.get("/names/{name}")
+async def add_name(name: str, add: bool = False):
+    if add and name not in fake_names:
+        fake_names.append(name)
+    return {"name": name}
 
 
 @app.get("/items/{item_id}")
@@ -26,9 +53,10 @@ async def read_user(user_id: str):
 
 
 class Model(str, Enum):
-    mathir = "mathir"
-    alagi = "alagi"
-    papa = "papa"
+    chatgpt = "chatgpt"
+    copilot = "copilot"
+    davinci = "davinci"
+    textcurie = "textcurie"
 
 
 @app.get("/model/{model}")
@@ -36,9 +64,21 @@ async def read_model(model: Model):
     return {"model_id": model.value, "message": f"Hello {model.value}!"}
 
 
-fake_items = [{"name": "Mathir"}, {"name": "Alagi"}, {"name": "Papa"}]
+@app.get("/names/{name}/age/{age}")
+async def read_name(name: str, age: int):
+    return {"name": name, "age": age}
 
 
-@app.get("/items/")
-async def read_items(limit: int = 1):
-    return {"items": fake_items[:limit]}
+class Blog(BaseModel):
+    title: str
+    content: str
+    author: str | None
+
+
+@app.post("/blog/")
+async def create_blog(blog: Blog):
+    return {
+        "title": blog.title,
+        "content": blog.content,
+        "author": blog.author or "Anonymous",
+    }
